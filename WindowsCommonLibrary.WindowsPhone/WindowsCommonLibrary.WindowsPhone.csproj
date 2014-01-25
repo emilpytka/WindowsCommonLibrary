@@ -90,8 +90,10 @@
     <Compile Include="Common\MessageService.cs" />
     <Compile Include="Common\NavigationService.cs" />
     <Compile Include="Common\PhotoService.cs" />
+    <Compile Include="Common\TaskCompletionSource.cs" />
     <Compile Include="Common\TileService.cs" />
     <Compile Include="Common\VideoService.cs" />
+    <Compile Include="Helpers\StreamHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

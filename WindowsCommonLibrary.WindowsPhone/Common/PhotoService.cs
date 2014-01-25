@@ -1,12 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Phone.Tasks;
+using System;
 using System.Threading.Tasks;
+using WindowsCommonLibrary.PCL.Interfaces;
+using WindowsCommonLibrary.WindowsPhone.Helpers;
 
 namespace WindowsCommonLibrary.WindowsPhone.Common
 {
-    class PhotoService
+    public class PhotoService : IPhotoService
     {
+        private TaskCompletionSource<byte[]> _tcs;
+
+        public Task<byte[]> TakePhotoFromCamera()
+        {
+            _tcs = new TaskCompletionSource<byte[]>();
+
+            CameraCaptureTask cameraCaptureTask;
+            cameraCaptureTask = new CameraCaptureTask();
+            cameraCaptureTask.Completed += new EventHandler<PhotoResult>(cameraCaptureTask_Completed);
+            cameraCaptureTask.Show();
+
+            return _tcs.Task;
+        }
+
+        private void cameraCaptureTask_Completed(object sender, PhotoResult e)
+        {
+            if (e.Error != null)
+            {
+                _tcs.SetException(e.Error);
+                return;
+            }
+            
+            var bytes = StreamHelper.ReadToEnd(e.ChosenPhoto);
+            _tcs.SetResult(bytes);
+        }
+
+        public Task<byte[]> TakePhotoFromDisc()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

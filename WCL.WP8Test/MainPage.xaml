@@ -50,6 +50,7 @@
             <StackPanel>
                 <Button Name="btMessageService" Content="Show Simple MessageBox" Click="btMessageService_Click"/>
                 <Button Name="btMessageServiceWithTitle" Content="Show MessageBox with title" Click="btMessageServiceWithTitle_Click"/>
+                <Button Name="btTakePhotoFromCamera" Content="Take photo from camera" Click="btTakePhotoFromCamera_Click"/>
 
             </StackPanel>
         </Grid>
