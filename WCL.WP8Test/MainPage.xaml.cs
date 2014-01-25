@@ -46,6 +46,16 @@ namespace WCL.WP8Test
                 MessageBox.Show("Error");
         }
 
+        private async void btTakePhotoFromGallery_Click(object sender, RoutedEventArgs e)
+        {
+            IPhotoService pService = new PhotoService();
+            var photo = await pService.TakePhotoFromDisc();
+            if (photo != null)
+                MessageBox.Show(string.Format("You've got a byte array with length = {0}", photo.Length));
+            else
+                MessageBox.Show("Error");
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

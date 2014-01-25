@@ -51,6 +51,7 @@
                 <Button Name="btMessageService" Content="Show Simple MessageBox" Click="btMessageService_Click"/>
                 <Button Name="btMessageServiceWithTitle" Content="Show MessageBox with title" Click="btMessageServiceWithTitle_Click"/>
                 <Button Name="btTakePhotoFromCamera" Content="Take photo from camera" Click="btTakePhotoFromCamera_Click"/>
+                <Button Name="btTakePhotoFromGallery" Content="Take photo from gallery" Click="btTakePhotoFromGallery_Click"/>
 
             </StackPanel>
         </Grid>

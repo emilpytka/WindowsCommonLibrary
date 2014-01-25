@@ -14,8 +14,7 @@ namespace WindowsCommonLibrary.WindowsPhone.Common
         {
             _tcs = new TaskCompletionSource<byte[]>();
 
-            CameraCaptureTask cameraCaptureTask;
-            cameraCaptureTask = new CameraCaptureTask();
+            CameraCaptureTask cameraCaptureTask = new CameraCaptureTask();
             cameraCaptureTask.Completed += new EventHandler<PhotoResult>(cameraCaptureTask_Completed);
             cameraCaptureTask.Show();
 
@@ -36,7 +35,13 @@ namespace WindowsCommonLibrary.WindowsPhone.Common
 
         public Task<byte[]> TakePhotoFromDisc()
         {
-            throw new NotImplementedException();
+            _tcs = new TaskCompletionSource<byte[]>();
+
+            PhotoChooserTask photoChooserTask = new PhotoChooserTask();
+            photoChooserTask.Completed += cameraCaptureTask_Completed;
+            photoChooserTask.Show();
+            return _tcs.Task;
+
         }
     }
 }
